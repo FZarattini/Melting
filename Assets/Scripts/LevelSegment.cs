@@ -7,6 +7,7 @@ public class LevelSegment : MonoBehaviour
 
     public GameObject upmostBlock;
     public GameObject downmostBlock;
+    public float yPosition;
 
     // Use this for initialization
     void Start()

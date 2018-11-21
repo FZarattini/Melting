@@ -40,6 +40,8 @@ public class Platform : MonoBehaviour
 
     private float Z_axis;
 
+    private bool firstGenerated;
+
     public static bool blockGenerated;
 
     [SerializeField]
@@ -51,6 +53,8 @@ public class Platform : MonoBehaviour
     void Start()
     {
         blockGenerated = false;
+
+        firstGenerated = false;
 
         lastIndex = 0;
 
@@ -78,13 +82,14 @@ public class Platform : MonoBehaviour
     {
 
         //Plataforma inicial
-        if (lastGenerated == null)
+        if (lastGenerated == null && firstGenerated == false)
         {
             Debug.Log("gerando plataforma inicial");
             list.Add(Instantiate(platformsPrefabs[10], new Vector3(Random.Range(0, xPosition.Length), yPosition, 0f), Quaternion.identity));
             lastGenerated = list[lastIndex] as GameObject;
 
             lastIsSimple = true;
+            firstGenerated = true;
         }
         else if (lastIsSimple)
         {
@@ -120,7 +125,7 @@ public class Platform : MonoBehaviour
             Debug.Log("gerando level");
             int index = Random.Range(0, platformsPrefabs.Length - 1);
             Debug.Log("size" + platformsPrefabs[index].GetComponent<SpriteRenderer>().bounds.size.y);
-            list.Add(Instantiate(platformsPrefabs[index], new Vector3(0f, -8f - platformsPrefabs[index].transform.localScale.y, 0f), Quaternion.identity));
+            list.Add(Instantiate(platformsPrefabs[index], new Vector3(0f, platformsPrefabs[index].GetComponent<LevelSegment>().yPosition, 0f), Quaternion.identity));
             lastIndex++;
             lastGenerated = list[lastIndex] as GameObject;
             lastIsSimple = false;

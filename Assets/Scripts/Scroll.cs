@@ -105,7 +105,7 @@ public class Scroll : MonoBehaviour {
         {
             if (o != null)
             {
-                if (o.tag == "Tile" && !o.name.Contains("LevelDesign") && o.transform.position.y > 9.5f) {
+                if (o.tag == "Tile" && !o.name.Contains("LevelDesign") && o.transform.position.y > 52f) {
                     Destroy(o.gameObject);
                 }
                 if (o.name.Contains("LevelDesign") && o.transform.position.y > 30f) //nao tah funfando
@@ -116,7 +116,7 @@ public class Scroll : MonoBehaviour {
                 {
                     Destroy(o.gameObject);
                 }
-                if (o.transform.position.y > 18f)
+                if (o.transform.position.y > 52f)
                 {
                     Destroy(o.gameObject);
                 }
